@@ -31,12 +31,19 @@ class MyDatabase:
     def close(self):
         self.connection.close()      
 
+'''
 const = Constants()
 
 test = MyDatabase( 
-  const.decrypt(Constants.e_host),
-  int(const.decrypt(Constants.e_port)),
-  const.decrypt(Constants.e_database),
-  const.decrypt(Constants.e_user),
-  const.decrypt(Constants.e_password),
+  const.decrypt(Constants.host),
+  int(const.decrypt(Constants.port)),
+  const.decrypt(Constants.database),
+  const.decrypt(Constants.user),
+  const.decrypt(Constants.password),
   )
+
+#print(test.query("INSERT INTO mytest (id) VALUES (3)"))
+print(test.query("SELECT * FROM mytest"))
+
+test.close()
+'''

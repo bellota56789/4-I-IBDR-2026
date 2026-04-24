@@ -2,17 +2,11 @@ from cryptography.fernet import Fernet
 import base64
 
 class Constants:
-    e_host = "Z0FBQUFBQnAzdUVBcTIwMklvZTUwYTUzVkpyWkhpR1dyZDdBdktoYlR3dno4U19HUjhuR1c5S1B1Q0txOWhqNVF0UVNsTGdnUlQzNl90cS00Z0NnTmd3S18tTGhHZGJ2OUF0MUF0TGJuUjc2VGJSQzdxTW1JMVNSd0V3UDZvZm43aFJoWlVLT2hGamM="
-    e_port = "Z0FBQUFBQnAzdUVBV29rS2VpWktPTktuQmNYak5vREVCcFRCSWRzWlVtZVByYWFmVWxDTmRma1ZtWWt2cFl5ajhQYklZSXdObGpZQm1HazludGdOUXVxNHQ4SlNxSXhSVEE9PQ=="
-    e_database = "Z0FBQUFBQnAzdUVBYi0ycUdMV3JTdVAyYzJXWmttdndsSGx2ZVVlc0dhWnhZZFRZYnFqaUlMTVdOdnNhZWREMWtPaVdpbUE5SHFmRFM3QS1FYjVfZ0R6SXBkbHFzQlk1QUE9PQ=="
-    e_user = "Z0FBQUFBQnAzdUVBVUZvd2hiSXVtZmd3U0l5aHpORmw2MWRFSEo4WFZIekNnbFR6dFJWUEhodW9VNDRERGh6MTNCbVVBZmpXZjl5NC1GVjB2OUZaSVVVOU1WUGR3MVFHa3c9PQ=="
-    e_password  = "Z0FBQUFBQnAzdUVBZnFvVnFuMFZUS2hRYnNLUkQ1cjRxdEtGRU02bVJCREVtOWl3WjRBSy1XX2gwcmVxZTRiUmdNLUdodFFDVzJoaE1IMlNPQjlGZ2NSZVRhNF9ITUYyWE9FRHk1ZU9pQ0RscndzS1NiNzFoOUU9"
-
-    host = "mysql-2992a152-cbtis-cf8.g.aivencloud.com"
-    port = "13707"
-    database = "defaultdb"
-    user = "avnadmin"
-    password  = "AVNS_zLiprBusLBca2THXHK8"
+    host = "Z0FBQUFBQnBsaE9oeG9DbnVIb2Q1cnFyemwxWnp3N0tkM1kyRnpQRTNQV1VSYjY3VlV2RkxBbmRLVUE4OHNKV1FwYy1MMS1YYWJoTGg3V1IyM2pzQ0FMVm9WUnE4blhRY2phbFhzTW5hWXBrVmlNVHZ2VzNVWmg0S3A0YjhxWGdiMWtaMzg4X2o2LW4="
+    port = "Z0FBQUFBQnBsaFB6amhWbmRfdWZodUFuTTNYcWFySzJlWmdiUWxjNkFsWWZrR1N4Q2R2TmNRejNSNkVpbmxqRnZPN3dvTHlSVEFjRlFNVjNpUXpPVHRDaTZjemgwUmRaeXc9PQ=="
+    database = "Z0FBQUFBQnBsaE5ZWk41MVNhYzl0ZTVKeVJYRkRMak81TlAzWnluMWFINjBJMmxuSHJxSm1wUnZRYjVFa1FpdEVsQ1J1Yy1mTHdqZTRESE5rNEZrTjlfRGRfRXJlYXVtTmc9PQ=="
+    user = "Z0FBQUFBQnBsaFFNVXNBTjc0c0FxbFlxOW1Pdkc0TGhBdWxvR09OeFFabnNKcXN1VHkweVQ0QjhRTmUzd21JQmpYYjhQdDVhYWN2bnIyRURINzVKQ1NMcGRMMkhOaUgya2c9PQ=="
+    password  = "Z0FBQUFBQnBsaFFsZWE3WXVMaHVyMFplZDVLdzJISHFQUWI5enU3YlBUSWZzSy1aZm9tcDNYWF9vUU44Z2NFejBXOE5VQ1F3NDFVU2ctZFFDRm9QNGZ2eFRUT29fNU5oLU9DbDRKUkVZei1hVzhIVGJRbGxfOWs9"
     
 
     def generate_and_save_key(self, key_filename="secret.key"):
@@ -46,19 +40,10 @@ class Constants:
         encoded_string = string.encode()
         decrypted_bytes = f.decrypt(base64.urlsafe_b64decode(encoded_string).decode('utf-8'))
         return decrypted_bytes.decode()
-
-
-const = Constants()
-print(f"Encrypted host : {const.encrypt(Constants.host)}")
-print(f"Encrypted port : {const.encrypt(Constants.port)}")
-print(f"Encrypted database : {const.encrypt(Constants.database)}")
-print(f"Encrypted user : {const.encrypt(Constants.user)}")
-print(f"Encrypted password : {const.encrypt(Constants.password)}")
-
+    
+    
 """
-print(f"Original Host : {const.decrypt(Constants.e_host)}")
-print(f"Original Port : {const.decrypt(Constants.e_port)}")
-print(f"Original Database : {const.decrypt(Constants.e_database)}")
-print(f"Original User : {const.decrypt(Constants.e_user)}")
-print(f"Original password : {const.decrypt(Constants.e_password)}")
+const = Constants()
+print(f"Original: {const.decrypt(Constants.user)}")
+print(f"Encrypted : {const.encrypt(const.decrypt(Constants.user))}")
 """

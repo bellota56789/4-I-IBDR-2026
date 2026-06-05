@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Contraseña</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; padding: 50px; }
+        .container { max-width: 400px; background: white; padding: 30px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1); margin: 0 auto; }
+        h2 { text-align: center; color: #333; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; color: #666; }
+        input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; }
+        button:hover { background-color: #0069d9; }
+        .link { text-align: center; margin-top: 15px; display: block; color: #28a745; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Recuperar Contraseña</h2>
+    <p style="color:#777; font-size:14px; text-align:center;">Ingresa tu correo para enviarte tu contraseña guardada.</p>
+    
+    <form action="/forget" method="POST">
+        <div class="form-group">
+            <label for="correo">Tu Correo Registrado:</label>
+            <input type="email" id="correo" name="correo" placeholder="correo@ejemplo.com" required>
+        </div>
+        <button type="submit">Enviar Contraseña</button>
+    </form>
+    
+    <a href="/register" class="link">Volver al Registro</a>
+</div>
+
+</body>
+</html>

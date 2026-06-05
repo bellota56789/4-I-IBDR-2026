@@ -1,18 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>aplicacion</title>
+    <title>Control Escolar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <table class="students">
-        <td {{registro.id}}></td>
-        <td {{registro.name}}></td>
-        <td {{registro.created}}></td>
-        <td {{registro.modified}}></td>
-    </table>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="row mb-4 align-items-center">
+            <div class="col-md-6">
+                <h2 class="text-primary fw-bold m-0">Sistema de Control Escolar</h2>
+            </div>
+            <div class="col-md-6">
+                <form action="{{ url_for('index') }}" method="GET" class="d-flex justify-content-end">
+                    <input class="form-control me-2 w-70" type="search" name="buscar" value="{{ criterio }}" placeholder="Buscar por nombre, grupo o materia..." aria-label="Search">
+                    <button class="btn btn-success" type="submit">Buscar</button>
+                </form>
+            </div>
+        </div>
 
-<link rel="stylesheet" href="style.css">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <h5 class="m-0">Lista de Alumnos</h5>
+                <a href="{{ url_for('exportar') }}" class="btn btn-light btn-sm fw-bold">Exportar CSV</a>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped m-0 align-middle">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Correo Electrónico</th>
+                                <th>Calificación</th>
+                                <th>Grupo</th>
+                                <th>Materia</th>
+                                <th class="text-center">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if alumnos %}
+                                {% for alumno in alumnos %}
+                                <tr>
+                                    <td>{{ alumno[0] }}</td>
+                                    <td><strong>{{ alumno[1] }}</strong></td>
+                                    <td>{{ alumno[2] }}</td>
+                                    <td><span class="badge bg-secondary fs-6">{{ alumno[3] }}</span></td>
+                                    <td><span class="badge bg-info text-dark fs-6">{{ alumno[4] }}</span></td>
+                                    <td>{{ alumno[5] }}</td>
+                                    <td class="text-center">
+                                        <a href="{{ url_for('editar', id=alumno[0]) }}" class="btn btn-warning btn-sm me-1">Editar</a>
+                                        <a href="{{ url_for('eliminar', id=alumno[0]) }}" class="btn btn-danger btn-sm" onclick="return confirm('¿Seguro que deseas eliminar este alumno?')">Eliminar</a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr>
+                                    <td colspan="7" class="text-center text-muted py-4">
+                                        No se encontraron alumnos cargados o coincidentes con la búsqueda.
+                                    </td>
+                                endtr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
